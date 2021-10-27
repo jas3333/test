@@ -9,7 +9,7 @@ read DISK
 read -p "This will erase this disk, are you sure?(y to continue otherwise exit)" continue
 
 case $continue in
-    y|yes
+    y|yes)
     sgdisk -Z ${DISK} # Remove everything on disk
 
     sgdisk -a 2048 -o ${DISK}
