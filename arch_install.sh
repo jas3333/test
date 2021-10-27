@@ -25,7 +25,8 @@ case $continue in
 
     mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
     mkfs.ext4 -L "ROOT" "${DISK}2"
-
+    ;;
+*)
     reboot now
     ;;
 esac
