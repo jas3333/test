@@ -19,5 +19,5 @@ sgdisk -t 2:8300 ${DISK}
 sgdisk -c 1:"UEFISYS" ${DISK}
 sgdisk -c 2:"ROOT" ${DISK}
 
-mkfs.vfat -F32 "UEFISYS" "${DISK}p1"
-mkfs.ext4 "ROOT" "${DISK}p2"
+mkfs.vfat -F32 "UEFISYS" "${DISK}1"
+mkfs.ext4 "ROOT" "${DISK}2"
