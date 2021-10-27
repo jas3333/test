@@ -23,8 +23,8 @@ case $continue in
     sgdisk -c 1:"UEFISYS" ${DISK}
     sgdisk -c 2:"ROOT" ${DISK}
 
-    mkfs.vfat -F32 "UEFISYS" "${DISK}1"
-    mkfs.ext4 "ROOT" "${DISK}2"
+    mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
+    mkfs.ext4 -L "ROOT" "${DISK}2"
 
     mount -L ROOT /mnt
     mkdir /mnt/boot
