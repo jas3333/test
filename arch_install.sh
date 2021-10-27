@@ -26,12 +26,16 @@ case $continue in
     mkfs.vfat -F32 -n "UEFISYS" "${DISK}1"
     mkfs.ext4 -L "ROOT" "${DISK}2"
 
-    mount -L ROOT /mnt
-    mkdir /mnt/boot
-    mkdir /mnt/boot/efi
-    mount -L UEFISYS /mnt/boot 
-
-
-
-
+    reboot now
+    ;;
 esac
+
+mount -L ROOT /mnt
+mkdir /mnt/boot
+mkdir /mnt/boot/efi
+mount -L UEFISYS /mnt/boot 
+
+pacstrap /mnt base base-devel linux linux-firmware vim --noconfirm --needed
+genfstab -U /mnt >> /mnt/etc/fstab
+
+
