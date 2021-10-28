@@ -31,8 +31,8 @@ mount -L ROOT /mnt
 
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
-mkdir /mnt/root/test
-cp -R /test /mnt/root/test
+mkdir /mnt/test
+cp -R /test /mnt/test
 arch-chroot /mnt /bin/bash << EOF
 
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
@@ -47,10 +47,8 @@ echo "127.0.0.1     localhost" >> /etc/hosts
 echo "::1           localhost" >> /etc/hosts
 echo "127.0.1.1     arch.localdomain    arch" >> /etc/hosts
 
-passwd
-
+cd /
 mkdir /boot/EFI
-
 mount -L UEFISYS /boot/EFI 
 
 pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools openssh base-devel linux-headers dialog os-prober mtools dosfstools git kitty --noconfirm --needed
@@ -61,8 +59,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 
-useradd -m -G wheel jas
-passwd jas
+
+read -p "Enter username: " username
+
+useradd -m -G wheel $username
+passwd $username
+
 echo "%wheel ALL=(ALL)" << /etc/sudoers
 EOF
 
