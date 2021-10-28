@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /bin/bash
 timedatectl set-ntp true
 
 lsblk
@@ -59,11 +59,16 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager
 
-
+read -p "Enter root password: " rpass
 read -p "Enter username: " username
+read -p "Enter user password: " upass
 
+echo "Setting root password."
+echo -en "$rpass\n$rpass" | passwd
+
+echo "Creating new user."
 useradd -m -G wheel $username
-passwd $username
+echo -en "$upass\n$upass" | passwd $username
 
 echo "%wheel ALL=(ALL)" << /etc/sudoers
 EOF
