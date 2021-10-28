@@ -53,6 +53,4 @@ useradd -m -G wheel $username
 echo -en "$upass\n$upass" | passwd $username
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-sed -i '19d' /etc/passwd
-sed -i '19i$username:x:1000:1000::/home/$username:/bin/zsh' /etc/passwd
 systemctl enable NetworkManager
