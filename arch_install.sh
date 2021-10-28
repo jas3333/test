@@ -32,5 +32,6 @@ mount -L ROOT /mnt
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 mkdir /mnt/test
+cd 
 cp -r test /mnt/test
 arch-chroot /mnt 
