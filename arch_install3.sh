@@ -7,6 +7,7 @@ cd yay
 makepkg -si --noconfirm
 
 # Get configs
+cd
 git clone https://github.com/jas3333/dotfiles.git
 
 cp -r dotfiles/.config ~/.config
@@ -53,7 +54,7 @@ PKGS=(
     'zip'
 )
 
-for PKG in "${PKGS[@]}; do
+for PKG in "${PKGS[@]}"; do
     echo "Installing.... ${PKG}"
     sudo pacman -S "$PKG" --noconfirm --needed
 done
