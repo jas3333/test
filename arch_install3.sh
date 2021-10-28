@@ -53,8 +53,6 @@ done
 
 sudo systemctl enable sddm
 
-sudo echo "net.ipv4.tcp_rmem=40960 873800 62914560" >> /etc/sysctl.d/99-sysctl.conf
-sudo echo "net.core.rmem_mag=25000000" >> /etc/sysctl.d/99-sysctl.conf
 
 
 
