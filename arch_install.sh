@@ -28,9 +28,6 @@ case $continue in
 esac
 
 mount -L ROOT /mnt
-mkdir /boot
-mkdir /boot/efi
-mount -L UEFISYS /boot/efi 
 
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -42,20 +39,28 @@ ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
+
 echo "arch" >> /etc/hostname
 echo "127.0.0.1     localhost" >> /etc/hosts
 echo "::1           localhost" >> /etc/hosts
 echo "127.0.1.1     arch.localdomain    arch" >> /etc/hosts
-pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools openssh base-devel linux-headers dialog os-prober mtools dosfstools git kitty --noconfirm --needed
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-systemctl enable NetworkManager
-echo "Enter user name: "
-read NUSER
 
-useradd -m -G wheel $NUSER
-passwd $NUSER
+mkdir /boot/EFI
+
+mount -L UEFISYS /boot/EFI 
+
+pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools openssh base-devel linux-headers dialog os-prober mtools dosfstools git kitty --noconfirm --needed
+
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+systemctl enable NetworkManager
+
+useradd -m -G wheel jas
+passwd jas
 echo "%wheel ALL=(ALL)" << /etc/sudoers
 EOF
 
