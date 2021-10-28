@@ -1,5 +1,13 @@
 #! /bin/bash
 
+cd
+mkdir AUR
+cd AUR
+git clone https://aur.archlinux.org/yay
+cd yay
+makepkg -si --noconfirm
+
+
 # Install AUR packages
 PKGS=(
     'sddm-sugar-candy-git'
@@ -15,3 +23,13 @@ done
 
 sudo sed -i '33d' /usr/lib/sddm/sddm.conf.d/default.conf
 sudo sed -i '33iCurrent=sugar-candy' /usr/lib/sddm/sddm.conf.d/default.conf
+
+cd
+git clone https://github.com/jas3333/dotfiles.git
+cp -r dotfiles/.config ~/
+cp -r dotfiles/.wallpapers ~/
+cp -r dotfiles/.local ~/
+fc-cache
+
+pip install psutil
+

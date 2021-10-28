@@ -1,16 +1,5 @@
 #! /bin/bash
 
-mkdir AUR
-cd AUR
-git clone https://aur.archlinux.org/yay
-cd yay
-makepkg -si --noconfirm
-
-# Get configs
-cd
-git clone https://github.com/jas3333/dotfiles.git
-
-
 read -p "Do you need the nvidia drivers? <y or anything else to skip.>" nvidia
 case $nvidia in
     y|Y|Yes|yes)
@@ -51,11 +40,6 @@ PKGS=(
     'rofi'
     'lxappearance'
 )
-
-cp -r dotfiles/.config ~/
-cp -r dotfiles/.wallpapers ~/
-cp -r dotfiles/.local ~/
-fc-cache
 
 for PKG in "${PKGS[@]}"; do
     echo "Installing.... ${PKG}"
