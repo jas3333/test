@@ -32,4 +32,4 @@ echo -en "$upass\n$upass" | passwd $username
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
 
-systemctl enable networkmanager
+systemctl enable NetworkManager
