@@ -77,4 +77,4 @@ Xcursor.theme: Adwaita
 Xcursor.size:64
 EOF
 
-xrdb --merge ~/.Xresources
+
