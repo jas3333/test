@@ -13,6 +13,7 @@ PKGS=(
     'sddm-sugar-candy-git'
     'librewolf-bin'
     'brave-bin'
+    'picom-jonaburg-git'
 )
 
 
@@ -33,3 +34,12 @@ fc-cache
 
 pip install psutil
 
+cat <<EOF > ~/.Xresources
+Xft.dpi: 192
+rofi.dpi:192
+qtile.dpi:192
+Xcursor.theme: Adwaita
+Xcursor.size:64
+EOF
+
+xrdb -merge ~/.Xresources

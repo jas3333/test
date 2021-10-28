@@ -39,6 +39,7 @@ PKGS=(
     'zip'
     'rofi'
     'lxappearance'
+    'dunst'
 )
 
 for PKG in "${PKGS[@]}"; do
@@ -46,19 +47,10 @@ for PKG in "${PKGS[@]}"; do
     sudo pacman -S "$PKG" --noconfirm --needed
 done
 
-pip install psutil
-
 sudo systemctl enable sddm
 
 sudo echo "net.ipv4.tcp_rmem=40960 873800 62914560" >> /etc/sysctl.d/99-sysctl.conf
 sudo echo "net.core.rmem_mag=25000000" >> /etc/sysctl.d/99-sysctl.conf
 
-cat <<EOF > ~/.Xresources
-Xft.dpi: 192
-rofi.dpi:192
-qtile.dpi:192
-Xcursor.theme: Adwaita
-Xcursor.size:64
-EOF
 
 
