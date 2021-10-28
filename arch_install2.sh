@@ -30,4 +30,6 @@ echo "Creating new user."
 useradd -m -G wheel $username
 echo -en "$upass\n$upass" | passwd $username
 
-echo "%wheel ALL=(ALL)" << /etc/sudoers
+echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+
+systemctl enable networkmanager
