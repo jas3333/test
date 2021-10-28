@@ -10,10 +10,6 @@ makepkg -si --noconfirm
 cd
 git clone https://github.com/jas3333/dotfiles.git
 
-cp -r dotfiles/.config ~/.config
-cp -r dotfiles/.wallpapers ~/.wallpapers
-cp -r dotfiles/.local ~/.local
-fc-cache
 
 read -p "Do you need the nvidia drivers? <y or anything else to skip.>" nvidia
 case $nvidia in
@@ -52,16 +48,33 @@ PKGS=(
     'zsh-syntax-highlighting'
     'zsh-autosuggestions'
     'zip'
+    'rofi'
+    'lxappearance'
 )
+
+cp -r dotfiles/.config ~/
+cp -r dotfiles/.wallpapers ~/
+cp -r dotfiles/.local ~/
+fc-cache
 
 for PKG in "${PKGS[@]}"; do
     echo "Installing.... ${PKG}"
     sudo pacman -S "$PKG" --noconfirm --needed
 done
 
+pip install psutil
+
 sudo systemctl enable sddm
 
 sudo echo "net.ipv4.tcp_rmem=40960 873800 62914560" >> /etc/sysctl.d/99-sysctl.conf
 sudo echo "net.core.rmem_mag=25000000" >> /etc/sysctl.d/99-sysctl.conf
 
+cat <<EOF > ~/.Xresources
+Xft.dpi: 192
+rofi.dpi:192
+qtile.dpi:192
+Xcursor.theme: Adwaita
+Xcursor.size:64
+EOF
 
+xrdb --merge ~/.Xresources
