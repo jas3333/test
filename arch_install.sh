@@ -54,8 +54,8 @@ systemctl enable NetworkManager
 echo "Enter user name: "
 read USER
 
-useradd -m -G wheel $USER
-passwd $USER
+useradd -m -G wheel {$USER}
+passwd {$USER}
 echo "%wheel ALL=(ALL)" << /etc/sudoers
 EOF
 
