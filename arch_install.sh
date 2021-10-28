@@ -6,7 +6,7 @@ lsblk
 echo "Enter disk to setup"
 read DISK
 
-read -p "This will erase this disk, are you sure?(y to continue otherwise exit)" continue
+read -p "This will erase this disk, are you sure? <y/yes to continue.> " continue
 
 case $continue in
     y|yes)
