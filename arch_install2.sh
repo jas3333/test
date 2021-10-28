@@ -10,7 +10,29 @@ echo "127.0.0.1     localhost" >> /etc/hosts
 echo "::1           localhost" >> /etc/hosts
 echo "127.0.1.1     arch.localdomain    arch" >> /etc/hosts
 
-pacman -S grub efibootmgr networkmanager network-manager-applet wireless_tools openssh base-devel linux-headers dialog os-prober mtools dosfstools git kitty sudo --noconfirm --needed
+PKGS=(
+    'grub'
+    'efibootmgr'
+    'networkmanager'
+    'network-manager-applet'
+    'openssh'
+    'wireless_tools'
+    'base-devel'
+    'linux-headers'
+    'dialog'
+    'os-prober'
+    'mtools'
+    'dosfstools'
+    'git'
+    'kitty'
+    'sudo'
+)
+
+for PKG in "${PKGS[@]}"; do
+    echo "Installing....${PKG}"
+    pacman -S "$PKG" --noconfirm --needed
+done
+
 
 cd /
 mkdir /boot/EFI
@@ -31,5 +53,6 @@ useradd -m -G wheel $username
 echo -en "$upass\n$upass" | passwd $username
 
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
-
+chsh $username /bin/zsh
 systemctl enable NetworkManager
+reboot now

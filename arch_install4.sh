@@ -39,7 +39,7 @@ Xft.dpi: 192
 rofi.dpi:192
 qtile.dpi:192
 Xcursor.theme: Adwaita
-Xcursor.size:64
+Xcursor.size:48
 EOF
 
-xrdb -merge ~/.Xresources
+

@@ -40,6 +40,10 @@ PKGS=(
     'rofi'
     'lxappearance'
     'dunst'
+    'python-dbus-next'
+    'bashtop'
+    'htop'
+    'pacman-contrib'
 )
 
 for PKG in "${PKGS[@]}"; do
