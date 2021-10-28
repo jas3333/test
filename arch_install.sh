@@ -28,9 +28,8 @@ case $continue in
 esac
 
 mount -L ROOT /mnt
-mkdir /mnt/boot
-mkdir /mnt/boot/efi
-mount -L UEFISYS /mnt/boot 
+mkdir /boot/efi
+mount -L UEFISYS /boot/efi 
 
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -52,10 +51,10 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 echo "Enter user name: "
-read USER
+read NUSER
 
-useradd -m -G wheel {$USER}
-passwd {$USER}
+useradd -m -G wheel {$NUSER}
+passwd {$NUSER}
 echo "%wheel ALL=(ALL)" << /etc/sudoers
 EOF
 
