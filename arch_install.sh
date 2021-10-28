@@ -47,6 +47,8 @@ echo "127.0.0.1     localhost" >> /etc/hosts
 echo "::1           localhost" >> /etc/hosts
 echo "127.0.1.1     arch.localdomain    arch" >> /etc/hosts
 
+passwd
+
 mkdir /boot/EFI
 
 mount -L UEFISYS /boot/EFI 
