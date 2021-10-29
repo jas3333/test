@@ -5,10 +5,12 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-echo "arch" >> /etc/hostname
+read -p "Enter hostname: >> " hostnm
+
+echo "$hostnm" >> /etc/hostname
 echo "127.0.0.1     localhost" >> /etc/hosts
 echo "::1           localhost" >> /etc/hosts
-echo "127.0.1.1     arch.localdomain    arch" >> /etc/hosts
+echo "127.0.1.1     $hostnm.localdomain    $hostnm" >> /etc/hosts
 
 PKGS=(
     'grub'
@@ -38,10 +40,7 @@ cd /
 mkdir /boot/EFI
 mount -L UEFISYS /boot/EFI
 
-read -p "Do you want to install grub? <y/n> " another
-case $another in
-    grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
-esac
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 read -p "Enter root password: " rpass
