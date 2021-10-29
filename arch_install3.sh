@@ -5,7 +5,20 @@ case $nvidia in
     y|Y|Yes|yes)
     echo "[multilib]" >> /etc/pacman.conf
     echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
-    sudo pacman -S --needed nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader --noconfirm
+    sudo pacman -Sy
+    NV=(
+        'nvidia-dkms'
+        'nvidia-utils'
+        'lib32-nvidia-utils'
+        'nvidia-settings'
+        'vulkan-icd-loader'
+        'lib32-vulkan-icd-loader'
+    )
+
+    for NVPKG in "${NV[@]}"; do
+        echo "Installing.... ${NVPKG}"
+        sudo pacman -S "$NVPKG" --noconfirm --needed
+    done
 esac
 
 # Install Package list

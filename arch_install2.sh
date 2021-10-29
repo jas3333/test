@@ -38,7 +38,10 @@ cd /
 mkdir /boot/EFI
 mount -L UEFISYS /boot/EFI
 
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+read -p "Do you want to install grub? <y/n> " another
+case $another in
+    grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+esac
 grub-mkconfig -o /boot/grub/grub.cfg
 
 read -p "Enter root password: " rpass
