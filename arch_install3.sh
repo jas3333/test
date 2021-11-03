@@ -57,6 +57,7 @@ PKGS=(
     'bashtop'
     'htop'
     'pacman-contrib'
+    'picom'
 )
 
 for PKG in "${PKGS[@]}"; do

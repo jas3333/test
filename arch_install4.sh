@@ -13,7 +13,6 @@ PKGS=(
     'sddm-sugar-candy-git'
     'librewolf-bin'
     'brave-bin'
-    'picom-jonaburg-git'
 )
 
 
