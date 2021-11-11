@@ -1,10 +1,11 @@
 #! /bin/bash
 
 read -p "Do you need the nvidia drivers? <y or anything else to skip.>" nvidia
+echo "[multilib]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
+
 case $nvidia in
     y|Y|Yes|yes)
-    echo "[multilib]" >> /etc/pacman.conf
-    echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
     sudo pacman -Sy
     NV=(
         'nvidia-dkms'
@@ -58,6 +59,7 @@ PKGS=(
     'htop'
     'pacman-contrib'
     'picom'
+    'blueman'
 )
 
 for PKG in "${PKGS[@]}"; do
