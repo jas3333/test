@@ -15,7 +15,7 @@ PKGS=(
     'brave-bin'
 )
 
-
+sudo yay -Sy
 for PKG in "${PKGS[@]}"; do
     echo "Installing.... ${PKG}"
     yay -S "$PKG" --noconfirm --needed

@@ -61,7 +61,7 @@ PKGS=(
     'picom'
     'blueman'
 )
-
+sudo pacman -Sy
 for PKG in "${PKGS[@]}"; do
     echo "Installing.... ${PKG}"
     sudo pacman -S "$PKG" --noconfirm --needed
