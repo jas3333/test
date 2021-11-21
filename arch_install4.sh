@@ -13,6 +13,7 @@ PKGS=(
     'sddm-sugar-candy-git'
     'librewolf-bin'
     'brave-bin'
+    'picom-jonaburg-git'
 )
 
 sudo yay -Sy
@@ -29,6 +30,9 @@ git clone https://github.com/jas3333/dotfiles.git
 cp -r dotfiles/.config ~/
 cp -r dotfiles/.wallpapers ~/
 cp -r dotfiles/.local ~/
+cp -r dotfiles/.themes ~/
+cp -r dotfiles/.vim ~/
+cp -r dotfiles/.vimrc ~/
 fc-cache
 
 pip install psutil

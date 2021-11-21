@@ -58,8 +58,10 @@ PKGS=(
     'bashtop'
     'htop'
     'pacman-contrib'
-    'picom'
     'blueman'
+    'nitrogen'
+    'feh'
+
 )
 sudo pacman -Sy
 for PKG in "${PKGS[@]}"; do
