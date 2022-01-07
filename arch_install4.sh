@@ -37,12 +37,12 @@ fc-cache
 
 pip install psutil
 
-cat <<EOF > ~/.Xresources
-Xft.dpi: 192
-rofi.dpi:192
-qtile.dpi:192
-Xcursor.theme: Adwaita
-Xcursor.size:48
-EOF
-
+#cat <<EOF > ~/.Xresources
+#Xft.dpi: 192
+#rofi.dpi:192
+#qtile.dpi:192
+#Xcursor.theme: Adwaita
+#Xcursor.size:48
+#EOF
+#
 
