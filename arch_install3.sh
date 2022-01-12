@@ -61,6 +61,7 @@ PKGS=(
     'blueman'
     'nitrogen'
     'feh'
+    'picom'
 
 )
 sudo pacman -Sy
