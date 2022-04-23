@@ -29,6 +29,7 @@ esac
 
 mount -L ROOT /mnt
 
+echo "ParallelDownloads = 5" /etc/pacman.conf
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 mkdir /mnt/test
