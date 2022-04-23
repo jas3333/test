@@ -29,6 +29,8 @@ esac
 
 mount -L ROOT /mnt
 
+reflector -c US --score 10 --save /etc/pacman.d/mirrorlist
+
 pacstrap /mnt base linux linux-firmware vim --noconfirm --needed
 genfstab -U /mnt >> /mnt/etc/fstab
 mkdir /mnt/test
