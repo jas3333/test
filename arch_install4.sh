@@ -21,8 +21,8 @@ for PKG in "${PKGS[@]}"; do
     yay -S "$PKG" --noconfirm --needed
 done
 
-sudo sed -i '33d' /usr/lib/sddm/sddm.conf.d/default.conf
-sudo sed -i '33iCurrent=sugar-candy' /usr/lib/sddm/sddm.conf.d/default.conf
+sudo cp -r /usr/lib/sddm/sddm.conf.d /etc/
+sudo sed -i 's/Current=/Current=sugar-candy' /etc/sddm.conf.d/default.conf
 
 cd
 git clone https://github.com/jas3333/dotfiles.git

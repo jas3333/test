@@ -57,7 +57,8 @@ echo "Creating new user."
 useradd -m -G wheel $username
 echo -en "$upass\n$upass" | passwd $username
 
-echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+sed -i '82d' /etc/sudoers
+sed -i '82i%wheel ALL=(ALL) ALL' /etc/sudoers
 systemctl enable NetworkManager
 
 echo "net.ipv4.tcp_rmem=40960 873800 62914560" >> /etc/sysctl.d/99-sysctl.conf
